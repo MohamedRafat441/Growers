@@ -1,0 +1,30 @@
+
+<div class="container mat-elevation-z8">
+    <mat-table #table [dataSource]="orders" matSort class="mat-cell">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index" >{{i+1}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="orderNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Order Number</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.orderNumber}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="totalAmount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.totalAmount}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="customerName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.customer.nameEn}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="growerName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Grower Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.grower.nameEn}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+    </mat-table>
+
+</div>
+

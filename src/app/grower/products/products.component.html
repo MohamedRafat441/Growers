@@ -1,0 +1,45 @@
+
+<div class="container mat-elevation-z8">
+    <mat-table #table [dataSource]="products" matSort class="mat-cell">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index" >{{i+1}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nameEn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.nameEn}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.price}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.description}}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="addNew()">
+                <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+              </button>
+            </mat-header-cell>
+      
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button class="sucess"  (click)="startEdit(products[i])" >
+                <mat-icon aria-label="Edit">edit</mat-icon>
+              </button>
+      
+              <button mat-icon-button color="warn" (click)="startDelete(products[i])">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+    </mat-table>
+
+</div>
+

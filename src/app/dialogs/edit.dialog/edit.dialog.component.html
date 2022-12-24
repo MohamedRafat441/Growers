@@ -1,0 +1,36 @@
+<div class="container">
+    <h3 mat-dialog-title>Edit Product</h3>
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+  
+
+      <!--Contains mat-hint for characters count and has maxLengt set-->
+      <div class="form">
+        <div>
+            <mat-form-field color="accent">
+                <input matInput #productName class="form-control"  [(ngModel)]="data.nameEn" name="nameEn" maxlength="50" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+      <div>
+        <mat-form-field color="accent">
+            <input matInput #productPrice type="number" class="form-control" placeholder="Price" [(ngModel)]="data.price" name="price"  required >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> 
+        </mat-form-field>
+      </div>
+        <div>
+            <mat-form-field color="accent">
+                <input matInput #productDesc class="form-control" placeholder="Description" [(ngModel)]="data.description" name="description" maxlength="50" required >
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+        </div>
+        
+      </div>
+  
+      <div mat-dialog-actions>
+        <button color="primary"  mat-button type="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmUpdate()">Save</button>
+        <button color="accent"  mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

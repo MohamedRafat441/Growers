@@ -1,0 +1,52 @@
+
+  <div class="demo-section">
+   <button  mat-icon-button  (click)="showCart()" >
+    
+   
+    <mat-icon matBadge="{{orderDetailsCount}}" matBadgeColor="warn" aria-label="shoppingCart" color="primary" >shopping_cart</mat-icon>
+    <span class="cdk-visually-hidden">
+        {{orderDetailsCount}}
+      </span>
+    </button>
+  </div>
+<div class="container mat-elevation-z8">
+    <mat-table #table [dataSource]="products" matSort class="mat-cell">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index" >{{i+1}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nameEn">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.nameEn}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.price}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+            <mat-cell *matCellDef="let row" >{{row.description}}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+              
+               Buy
+              
+            </mat-header-cell>
+      
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="buy(products[i])"  >
+                <mat-icon class="sucess" aria-label="AddCart" >add_shopping_cart</mat-icon>
+              </button>
+      
+            </mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+    </mat-table>
+
+</div>
+
